@@ -49,9 +49,8 @@ jobs:
         name: Upload dist
         with:
           name: github-pages
-          path: institutional-website-v1/docs
-          if-no-files-found: error
-          #overwrite: true
+          path: institutional-website-v1/dist
+
   # Single deploy job since we're just deploying
   deploy:
     needs: build
