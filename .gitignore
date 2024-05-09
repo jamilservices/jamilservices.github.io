@@ -1,4 +1,8 @@
 *
 
+!.gitignore
+!CNAME
+!.github
+!.github/**
 !institutional-website-v1
 !institutional-website-v1/.gitignore

@@ -45,14 +45,13 @@ jobs:
           cd institutional-website-v1
           pnpm install
           pnpm run build
-          cp -rf docs ../
       - uses: actions/upload-artifact@v4
         name: Upload dist
         with:
           name: github-pages
-          path: docs
+          path: institutional-website-v1/docs
           if-no-files-found: error
-          overwrite: true
+          #overwrite: true
   # Single deploy job since we're just deploying
   deploy:
     needs: build
