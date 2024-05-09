@@ -45,7 +45,8 @@ jobs:
           cd institutional-website-v1
           pnpm install
           pnpm run build
-          tar -cvf artifact.tar ./dist/*
+          cd dist
+          tar -cvf ../artifact.tar *
       #- uses: actions/upload-pages-artifact@v3
       - uses: actions/upload-artifact@v4
         name: Upload dist
