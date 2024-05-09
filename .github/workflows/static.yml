@@ -41,7 +41,6 @@ jobs:
         with:
           node-version: ${{ matrix.node }}
       - name: Install dependencies
-        if: github.ref != 'refs/heads/main'
         run: |
           pnpm install
           pnpm run build
