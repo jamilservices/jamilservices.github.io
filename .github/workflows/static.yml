@@ -45,11 +45,13 @@ jobs:
           cd institutional-website-v1
           pnpm install
           pnpm run build
-      - uses: actions/upload-pages-artifact@v3
+          tar -cvf artifact.tar ./dist/*
+      #- uses: actions/upload-pages-artifact@v3
+      - uses: actions/upload-artifact@v4
         name: Upload dist
         with:
           name: github-pages
-          path: institutional-website-v1/dist
+          path: institutional-website-v1/artifact.tar
 
   # Single deploy job since we're just deploying
   deploy:
