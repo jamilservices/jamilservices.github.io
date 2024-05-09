@@ -44,19 +44,15 @@ jobs:
         run: |
           pnpm install
           pnpm run build
-          pwd
-          echo $PWD
-          ls
       - uses: actions/upload-artifact@v4
         name: Upload dist
         with:
-          name: dist-files.tar
+          name: github-pages
           path: institutional-website-v1/dist
           if-no-files-found: error
   # Single deploy job since we're just deploying
   deploy:
     needs: build
-
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
@@ -64,4 +60,4 @@ jobs:
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v1
+        uses: actions/deploy-pages@v4
