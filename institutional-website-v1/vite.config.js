@@ -9,7 +9,7 @@ export default defineConfig({
     root: './src',
     build: {
         manifest: false,
-        outDir: '../dist',
+        outDir: '../docs',
     },
     css: {
         postcss: {
