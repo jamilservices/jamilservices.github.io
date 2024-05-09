@@ -4,5 +4,6 @@
 !CNAME
 !.github
 !.github/**
+!README.md
 !institutional-website-v1
 !institutional-website-v1/.gitignore
