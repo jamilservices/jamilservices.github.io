@@ -48,7 +48,7 @@ jobs:
         name: Upload dist
         with:
           name: dist-files.tar
-          path: institutional-website-v1/
+          path: institutional-website-v1/dist/
           if-no-files-found: error
   # Single deploy job since we're just deploying
   deploy:
