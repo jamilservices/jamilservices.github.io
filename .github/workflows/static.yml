@@ -40,7 +40,7 @@ jobs:
         run: |
           cd institutional-website-v1
           pnpm install
-          pnpm run build --publish=never
+          pnpm run build
           tar -cvf dist-files.tar ./dist/*
           pwd
           ls
