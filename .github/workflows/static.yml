@@ -47,7 +47,6 @@ jobs:
           pnpm run build
           cd dist
           tar -cvf ../artifact.tar *
-      #- uses: actions/upload-pages-artifact@v3
       - uses: actions/upload-artifact@v4
         name: Upload dist
         with:
