@@ -25,18 +25,17 @@ jobs:
       contents: read
       packages: write
     steps:
+      - name: Install pnpm
+        uses: pnpm/action-setup@v3
+        with:
+          version: 9.1.0
+          run_install: false
       - uses: actions/checkout@v4
       - name: Use Node.js ${{ matrix.node }}
         uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node }}
           cache: "pnpm"
-
-      - name: Install pnpm
-        uses: pnpm/action-setup@v3
-        with:
-          version: 9.1.0
-          run_install: false
       - name: Install dependencies
         if: github.ref != 'refs/heads/main'
         run: |
