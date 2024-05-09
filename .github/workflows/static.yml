@@ -18,7 +18,7 @@ jobs:
   build:
     strategy:
       matrix:
-        node: [ "20" ]
+        node: [ "20.10.x" ]
         runs-on: [ubuntu-latest]
     runs-on: ${{ matrix.runs-on }}
     permissions:
