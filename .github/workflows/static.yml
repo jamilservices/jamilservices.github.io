@@ -45,16 +45,11 @@ jobs:
           cd institutional-website-v1
           pnpm install
           pnpm run build
-          echo ::group::Archive artifact
-          cd dist
-          tar -cvf ../dist-files.tar .
-          echo ::endgroup::
       - uses: actions/upload-artifact@v4
         name: Upload dist
         with:
-          path: institutional-website-v1/dist-files.tar
+          path: institutional-website-v1/dist
           if-no-files-found: error
-          retention-days: '1'
   # Single deploy job since we're just deploying
   deploy:
     needs: build
