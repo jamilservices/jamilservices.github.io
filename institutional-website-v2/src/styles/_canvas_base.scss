@@ -248,21 +248,21 @@ body {
       &::-webkit-slider-runnable-track {
         block-size:  0.688rem;
         cursor: pointer;
-        box-shadow: 0.063rem 0.063rem 0.063rem #000000;
+        box-shadow: 0.063rem 0.063rem 0.063rem var(--text-color);
         border-radius: var(--radius-round);
-        border: 0 solid #010101;
+        border: 0 solid var(--text-color);
       }
       &::-moz-range-track {
         block-size:  0.688rem;
         cursor: pointer;
-        box-shadow: 0.063rem 0.063rem 0.063rem #000000;
+        box-shadow: 0.063rem 0.063rem 0.063rem var(--text-color);
         border-radius: var(--radius-round);
-        border: 0 solid #010101;
+        border: 0 solid var(--text-color);
       }
 
       &::-webkit-slider-thumb {
-        box-shadow: 0.063rem 0.063rem 0.063rem #000031;
-        border: 0.063rem solid #00001E;
+        box-shadow: 0.063rem 0.063rem 0.063rem var(--text-color);
+        border: 0.063rem solid var(--text-color);
         block-size: 1.625rem;
         inline-size: 1.625rem;
         border-radius: var(--radius-round);
@@ -272,8 +272,8 @@ body {
         margin-top: -0.5rem;
       }
       &::-moz-range-thumb {
-        box-shadow: 0.063rem 0.063rem 0.063rem #000031;
-        border: 0.063rem solid #00001E;
+        box-shadow: 0.063rem 0.063rem 0.063rem var(--text-color);
+        border: 0.063rem solid var(--text-color);
         block-size: 1.625rem;
         inline-size: 1.625rem;
         border-radius: var(--radius-round);
@@ -291,15 +291,15 @@ body {
 
       &::-ms-fill-lower,
       &::-ms-fill-upper {
-        border: 0 solid #010101;
+        border: 0 solid var(--text-color);
         border-radius: var(--radius-round);
-        box-shadow: 0.063rem 0.063rem 0.063rem #000000;
+        box-shadow: 0.063rem 0.063rem 0.063rem var(--text-color);
       }
 
       &::-ms-thumb {
         margin-top: 0.063rem;
-        box-shadow: 0.063rem 0.063rem 0.063rem #000031;
-        border: 0.063rem solid #00001E;
+        box-shadow: 0.063rem 0.063rem 0.063rem var(--text-color);
+        border: 0.063rem solid var(--text-color);
         inline-size: 1.625rem;
         block-size: 1.625rem;
         border-radius: var(--radius-round);
