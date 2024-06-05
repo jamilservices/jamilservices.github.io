@@ -198,7 +198,7 @@ body {
     grid-template-columns: repeat(auto-fill, minmax(var(--grid-column-max), 1fr));
     &.slider {
       justify-content: center;
-      grid-template-columns: repeat(auto-fit, 10rem);
+      grid-template-columns: repeat(auto-fit, minmax(10.5rem, 10rem));
     }
     grid-gap: var(--grid-layout-gap);
 
@@ -226,22 +226,123 @@ body {
       text-decoration-thickness: 0.063rem;
       text-underline-offset: 0.5rem;
     }
+
+    //
+    :where(input[type="range"]) {
+      block-size: 2.125rem;
+      -webkit-appearance: none;
+      margin:  0.625rem 0;
+      background: transparent;
+
+      &:focus {
+        outline: none;
+      }
+
+      &::-webkit-slider-runnable-track {
+        background: var(--menu-hover-background-color);
+      }
+      &::-moz-range-track {
+        background: var(--menu-hover-background-color);
+      }
+
+      &::-webkit-slider-runnable-track {
+        block-size:  0.688rem;
+        cursor: pointer;
+        box-shadow: 0.063rem 0.063rem 0.063rem #000000;
+        border-radius: var(--radius-round);
+        border: 0 solid #010101;
+      }
+      &::-moz-range-track {
+        block-size:  0.688rem;
+        cursor: pointer;
+        box-shadow: 0.063rem 0.063rem 0.063rem #000000;
+        border-radius: var(--radius-round);
+        border: 0 solid #010101;
+      }
+
+      &::-webkit-slider-thumb {
+        box-shadow: 0.063rem 0.063rem 0.063rem #000031;
+        border: 0.063rem solid #00001E;
+        block-size: 1.625rem;
+        inline-size: 1.625rem;
+        border-radius: var(--radius-round);
+        background: var(--link-color);
+        cursor: pointer;
+        -webkit-appearance: none;
+        margin-top: -0.5rem;
+      }
+      &::-moz-range-thumb {
+        box-shadow: 0.063rem 0.063rem 0.063rem #000031;
+        border: 0.063rem solid #00001E;
+        block-size: 1.625rem;
+        inline-size: 1.625rem;
+        border-radius: var(--radius-round);
+        background: var(--link-color);
+        cursor: pointer;
+      }
+
+      &::-ms-track {
+        block-size:  0.688rem;
+        cursor: pointer;
+        background: transparent;
+        border-color: transparent;
+        color: transparent;
+      }
+
+      &::-ms-fill-lower,
+      &::-ms-fill-upper {
+        border: 0 solid #010101;
+        border-radius: var(--radius-round);
+        box-shadow: 0.063rem 0.063rem 0.063rem #000000;
+      }
+
+      &::-ms-thumb {
+        margin-top: 0.063rem;
+        box-shadow: 0.063rem 0.063rem 0.063rem #000031;
+        border: 0.063rem solid #00001E;
+        inline-size: 1.625rem;
+        block-size: 1.625rem;
+        border-radius: var(--radius-round);
+        background: var(--link-color);
+        cursor: pointer;
+      }
+
+    }
+    //
+
     :where(input[name="theme"]) {
       display: inline-flex;
+      appearance: none;
+      margin: 0;
       align-items: center;
-      block-size: fit-content;
-      &:before {
-        display: inherit;
-        font-size: var(--font-size-2);
+
+      :is(&[value="dark"], &[value="light"]) {
+        &::after, &::before {
+          display: inherit;
+          font-size: var(--font-size-2);
+          text-transform: var(--text-uppercase);
+        }
+        &::before {
+          content: "\2714";
+          color: transparent;
+          padding-inline-end: 0.25rem;
+          transform: scale(0);
+          transition: 120ms transform ease-in-out;
+        }
+        &:checked::before {
+          transform: scale(1);
+          color: var(--link-color);
+        }
       }
+
       :is(&[value="dark"]) {
-        &:before {
-          content: "dark";
+        &:after, &:checked:after{
+          content: "escuro";
         }
       }
       :is(&[value="light"]) {
-        &:before {
-          content: "light";
+        &:after, &:checked:after{
+          content: "claro";
         }
       }
     }

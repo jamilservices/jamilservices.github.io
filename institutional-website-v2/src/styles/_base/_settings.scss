@@ -55,16 +55,6 @@ $media-xxl: 1920px;
   }
 }
 
-@media (prefers-color-scheme: light), (prefers-color-scheme: no-preference) {
-  :where(:root) {
-    --theme-mode: 'light';
-  }
-}
-@media (prefers-color-scheme: dark) {
-  :where(:root) {
-    --theme-mode: 'dark';
-  }
-}
 @media (prefers-reduced-motion: no-preference) {
   :where(html) {
     scroll-behavior: smooth;
