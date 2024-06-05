@@ -229,84 +229,120 @@ body {
 
     //
     :where(input[type="range"]) {
-      block-size: 2.125rem;
-      -webkit-appearance: none;
-      margin:  0.625rem 0;
+      //color: #f07167;
+      color: var(--link-color);
+      --track-color: var(--menu-hover-background-color);
+      --thumb-height: 1.125em;
+      --track-height: 0.125em;
+      --clip-edges: 0.125em;
+
+      appearance: none;
+      transition: all ease 100ms;
+      height: var(--thumb-height);
+
+      position: relative;
       background: transparent;
+      overflow: hidden;
 
-      &:focus {
-        outline: none;
-      }
-
-      &::-webkit-slider-runnable-track {
-        background: var(--menu-hover-background-color);
-      }
-      &::-moz-range-track {
-        background: var(--menu-hover-background-color);
+      &:active {
+        cursor: grabbing;
       }
 
-      &::-webkit-slider-runnable-track {
-        block-size:  0.688rem;
-        cursor: pointer;
-        box-shadow: 0.063rem 0.063rem 0.063rem var(--text-color);
-        border-radius: var(--radius-round);
-        border: 0 solid var(--text-color);
+      &::-webkit-slider-runnable-track,
+      &::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        transition: all ease 100ms;
+        height: var(--thumb-height);
       }
-      &::-moz-range-track {
-        block-size:  0.688rem;
-        cursor: pointer;
-        box-shadow: 0.063rem 0.063rem 0.063rem var(--text-color);
-        border-radius: var(--radius-round);
-        border: 0 solid var(--text-color);
+
+      &::-webkit-slider-runnable-track,
+      &::-webkit-slider-thumb {
+        position: relative;
       }
 
       &::-webkit-slider-thumb {
-        box-shadow: 0.063rem 0.063rem 0.063rem var(--text-color);
-        border: 0.063rem solid var(--text-color);
-        block-size: 1.625rem;
-        inline-size: 1.625rem;
-        border-radius: var(--radius-round);
-        background: var(--link-color);
-        cursor: pointer;
-        -webkit-appearance: none;
-        margin-top: -0.5rem;
+        --thumb-radius: calc((var(--thumb-height) * 0.5) - 1px);
+        --clip-top: calc((var(--thumb-height) - var(--track-height)) * 0.5 - 0.5px);
+        --clip-bottom: calc(var(--thumb-height) - var(--clip-top));
+        --clip-further: calc(100% + 1px);
+        --box-fill: calc(-100vmax - var(--thumb-width, var(--thumb-height))) 0 0
+        100vmax currentColor;
+
+        width: var(--thumb-width, var(--thumb-height));
+        background-color: currentColor;
+        box-shadow: var(--box-fill);
+        border-radius: var(--thumb-width, var(--thumb-height));
+
+        filter: brightness(100%);
+        clip-path: polygon(
+                        100% -1px,
+                        var(--clip-edges) -1px,
+                        0 var(--clip-top),
+                        -100vmax var(--clip-top),
+                        -100vmax var(--clip-bottom),
+                        0 var(--clip-bottom),
+                        var(--clip-edges) 100%,
+                        var(--clip-further) var(--clip-further)
+        );
       }
+
+      &:hover::-webkit-slider-thumb {
+        cursor: grab;
+      }
+
+      &:active::-webkit-slider-thumb {
+        cursor: grabbing;
+      }
+      &::-webkit-slider-runnable-track {
+        background: linear-gradient(var(--track-color) 0 0) scroll no-repeat center /
+		100% calc(var(--track-height) + 1px);
+      }
+
+      &::-moz-range-track,
       &::-moz-range-thumb {
-        box-shadow: 0.063rem 0.063rem 0.063rem var(--text-color);
-        border: 0.063rem solid var(--text-color);
-        block-size: 1.625rem;
-        inline-size: 1.625rem;
-        border-radius: var(--radius-round);
-        background: var(--link-color);
-        cursor: pointer;
+        appearance: none;
+        transition: all ease 100ms;
+        height: var(--thumb-height);
       }
 
-      &::-ms-track {
-        block-size:  0.688rem;
-        cursor: pointer;
-        background: transparent;
-        border-color: transparent;
-        color: transparent;
+      &::-moz-range-thumb {
+        background: currentColor;
+        border: 0;
+        width: var(--thumb-width, var(--thumb-height));
+        border-radius: var(--thumb-width, var(--thumb-height));
+        cursor: grab;
       }
 
-      &::-ms-fill-lower,
-      &::-ms-fill-upper {
-        border: 0 solid var(--text-color);
-        border-radius: var(--radius-round);
-        box-shadow: 0.063rem 0.063rem 0.063rem var(--text-color);
+      &:active::-moz-range-thumb {
+        cursor: grabbing;
       }
 
-      &::-ms-thumb {
-        margin-top: 0.063rem;
-        box-shadow: 0.063rem 0.063rem 0.063rem var(--text-color);
-        border: 0.063rem solid var(--text-color);
-        inline-size: 1.625rem;
-        block-size: 1.625rem;
-        border-radius: var(--radius-round);
-        background: var(--link-color);
-        cursor: pointer;
+      &::-moz-range-track {
+        width: 100%;
+        background: var(--track-color);
       }
 
+      &::-moz-range-progress {
+        appearance: none;
+        background: currentColor;
+        transition-delay: 30ms;
+      }
+
+      &::-moz-range-track,
+      &::-moz-range-progress {
+        height: calc(var(--track-height) + 1px);
+        border-radius: var(--track-height);
+      }
+
+      /*&::-moz-range-thumb,
+      &::-moz-range-progress {
+        filter: brightness(100%);
+      }*/
+
+      /*&:active::-moz-range-thumb,
+      &:active::-moz-range-progress {
+        filter: brightness(var(--brightness-down));
+      }*/
     }
     //
 
