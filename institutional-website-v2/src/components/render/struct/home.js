@@ -90,13 +90,13 @@ const facebook = [
     }),
     makeLink({
         title: "facebook page: JamilServicos",
-        text: "\u0040JamilServicos",
-        href: "https://www.facebook.com/JamilServicos"
+        text: "\u0040jamilservicos",
+        href: "https://www.facebook.com/jamilservicos"
     }),
     makeLink({
         title: "facebook page: JamilServices",
-        text: "\u0040JamilServices",
-        href: "https://www.facebook.com/JamilServices"
+        text: "\u0040jamilservices",
+        href: "https://www.facebook.com/jamilservices"
     }),
 ];
 const twitter = [
@@ -124,8 +124,8 @@ const linkedin = [
         href: "https://www.linkedin.com/in/jamilservicos/"
     }),
     makeLink({
-        title: "linkedin: jamilservicos",
-        text: "\u0040jamilservicos",
+        title: "linkedin: jamilservices",
+        text: "\u0040jamilservices",
         href: "https://www.linkedin.com/company/jamilservices"
     }),
 ];
@@ -169,13 +169,13 @@ const main = {
     },
     children: [
         makeTitle({
-            text: "Social NetWorks"
+            text: "Redes Sociais"
         }), socialStuct,
         makeTitle({
             text: "Open Source"
         }), openSourceStruct,
         makeTitle({
-            text: "Remote Business"
+            text: "Top 3 - Services"
         }), privateProjectStruct
     ]
 };

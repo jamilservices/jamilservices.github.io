@@ -1,11 +1,11 @@
 @mixin light-theme {
   :where(html) {
     color-scheme: light;
-    --text-color: #010A16;
-    --background-color: #F6F6F4;
+    --text-color: #000;
+    --background-color: #e3e3e3;
     --menu-hover-background-color: #C5C4CB;
-    --link-color: #C11700;
-    --header-color: #48352F;
+    --link-color: #B22222;
+    --header-color: #050709;
     --header-border-color: #8B899B;
   }
 }

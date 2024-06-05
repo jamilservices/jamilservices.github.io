@@ -5,7 +5,7 @@ import {logoSVGStruct} from "@components/render/struct/logoSVG.js";
 const menuItems = [
     {text: "home", link: "home"},
     {text: "sponsors", link: "sponsors"},
-    {text: "about", link: "about"}
+    {text: "sobre", link: "about"}
 ];
 
 const menuItemsStruct = () => {

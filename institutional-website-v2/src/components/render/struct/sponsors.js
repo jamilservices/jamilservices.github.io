@@ -63,15 +63,15 @@ const main = {
     children: [
         {
             element: "h2",
-            text: "Como Patrocinar o desenvolvedor?"
+            text: "Apoiar o desenvolvedor"
         },
         {
             element: "p",
-            text: "Como desenvolvedor - Jamil Services - j\u00E1 realizou e ainda realiza diversas contribui\u00E7\u00F5es para projetos OpenSource."
+            text: "Jamil Services sempre realizou - e ainda realiza - diversas contribui\u00E7\u00F5es para projetos OpenSource."
         },
         {
             element: "p",
-            text: "Veja algumas maneiras de patrocin\u00E1-lo como desenvolvedor:"
+            text: "Veja algumas maneiras de apoi\u00E1-lo:"
         },
         {
             element: "p",
