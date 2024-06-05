@@ -1,0 +1,272 @@
+@use "_base/settings";
+
+:where(:root) {
+  @include settings.base-root;
+  @include settings.border;
+}
+
+:where(html, body) {
+  inline-size: 100%;
+  block-size: 100%;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  outline: none;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: var(--background-color);
+  color: var(--text-color);
+
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    outline: none;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+body {
+  overflow: auto;
+}
+:where(svg) {
+  pointer-events: none;
+}
+:where(ol, ul) {
+  list-style: none;
+}
+
+:where(h1, h2, h3, h4, h5, h6) {
+  font-weight: var(--font-weight-5);
+}
+
+//noinspection CssNoGenericFontName
+:where(p) {
+  display: block;
+  overflow: hidden;
+  white-space: normal;
+  padding-block: 0.5rem;
+  font-size: var(--font-size-2);
+  font-weight: var(--font-weight-4);
+  line-height: var(--font-line-height-3);
+  letter-spacing: var(--font-letter-spacing-2);
+  font-family: var(--font-sans);
+}
+
+:where(strong,b) {
+  font-weight: normal;
+  line-height: inherit;
+}
+:where(em, i) {
+  font-style: normal;
+  line-height: inherit;
+}
+:where(img, picture) {
+  max-inline-size: 100%;
+  display: inline-flex;
+}
+:where(input, button, textarea, select) {
+  font: inherit;
+  color: inherit;
+}
+
+:is(section.rounded, div.rounded, li.rounded, button.rounded, span.rounded) {
+  border-radius: var(--radius-round);
+}
+:is(button.link, li.link, span.link, i.link) {
+  cursor: pointer;
+}
+:where(header, main, footer) {
+  display: inline-flex;
+  inline-size: 100%;
+  max-inline-size: 64rem;
+  padding: 1rem;
+  :where(section) {
+    display: inline-flex;
+  }
+}
+:where(header, main) {
+  align-items: flex-start;
+}
+//noinspection CssNoGenericFontName
+:is(footer.copyright) {
+  font-family: var(--font-mono);
+  font-size: var(--font-fluid-size-1);
+  font-weight: var(--font-weight-6);
+  justify-content: center;
+  align-items: center;
+  letter-spacing: var( --font-letter-spacing-3);
+  text-wrap: balance;
+  text-align: center;
+  word-break: break-word;
+}
+:is(section.canvas-container) {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 0.25rem;
+  inline-size: 100%;
+  block-size: 100%;
+}
+:is(main[data-state="main.canvas"]) {
+  flex-grow: 1;
+
+  &, [data-state="view.main"] {
+    inline-size: 100%;
+  }
+}
+
+:is(section.top-menu) {
+  align-items: center;
+  block-size: 8ex;
+  justify-content: flex-end;
+  flex-grow: 1;
+  :where(nav) {
+    display: inline-flex;
+    inline-size: fit-content;
+    :is(ul.default-menu, ul.compact-menu) {
+      display: none;
+      :where(a) {
+        text-decoration: none;
+      }
+    }
+    //noinspection CssNoGenericFontName
+    :is(ul.default-menu) {
+      gap: 0.5rem;
+      align-items: center;
+      li {
+        display: inline-flex;
+        padding: 0;
+        margin: 0;
+        inline-size: fit-content;
+        block-size: fit-content;
+      }
+      :is(li.item-menu) a {
+        display: inline-flex;
+        font-family: var(--font-sans);
+        padding-inline: 0.75rem;
+        padding-block: 0.5rem;
+        font-size: var(--font-size-2);
+        font-weight: var(--font-weight-4);
+        color: inherit;
+        border: 0;
+        border-radius: var(--radius-round);
+        &:hover {
+          background-color: var(--menu-hover-background-color);
+        }
+      }
+    }
+    @media (min-width: 30rem) {
+      :is(ul.default-menu) {
+        display: inline-flex;
+      }
+    }
+    @media (max-width: 29.969rem) {
+      :is(ul.compact-menu) {
+        display: inline-flex;
+      }
+    }
+  }
+}
+
+:is(article.about, article.sponsors, article.home) {
+  display: inline-flex;
+  flex-direction: column;
+  inline-size: inherit;
+  :where(h2, h3) {
+    text-wrap: balance;
+    word-break: normal;
+  }
+  :where(ul) {
+    display: grid;
+    --grid-layout-gap: 2ex;
+    --grid-column-count: 3;
+    --grid-item--min-width: 8rem;
+    --gap-count: calc(var(--grid-column-count) - 1);
+    --total-gap-width: calc(var(--gap-count) * var(--grid-layout-gap));
+    --grid-item--max-width: calc((100% - var(--total-gap-width)) / var(--grid-column-count));
+    --grid-column-max: max(var(--grid-item--min-width), var(--grid-item--max-width));
+
+    grid-template-columns: repeat(auto-fill, minmax(var(--grid-column-max), 1fr));
+    grid-gap: var(--grid-layout-gap);
+
+  }
+  :where(p) {
+    padding-inline: 1rem;
+    font-weight: var(--font-weight-4);
+  }
+  :is(p.list, li.list) {
+    display: inline-flex;
+    flex-direction: column;
+    gap: 1rem;
+    overflow: hidden;
+    padding-inline: 1.5rem;
+    padding-block: .5rem;
+
+    :where(a) {
+      display: inline-flex;
+      color: var(--link-color);
+      line-height: var(--font-line-height-5);
+      text-decoration-color: var(--link-color);
+      text-decoration-line: underline;
+      text-decoration-skip-spaces: all;
+      text-decoration-style: dashed;
+      text-decoration-thickness: 0.063rem;
+      text-underline-offset: 0.5rem;
+    }
+  }
+}
+
+:is(article.about, article.sponsors) {
+  :where(h2) {
+    inline-size: inherit;
+    font-size: var(--font-size-3);
+    padding-inline: 0.5rem;
+    padding-block: 0.25rem;
+    font-weight: var(--font-weight-6);
+    text-transform: var(--text-uppercase);
+    border-bottom-style: solid;
+    border-bottom-width: 0.063rem;
+    border-bottom-color: var(--header-border-color);
+    color: var(--header-color);
+  }
+}
+:is(article.about) {
+  gap: 0;
+  :first-child + p {
+    padding-block-start: 6ex;
+  }
+}
+:is(article.sponsors, article.home) {
+  gap: 4ex;
+}
+:is(article.home) {
+  :where(h2, h3) {
+    inline-size: inherit;
+    padding-inline: 0.5rem;
+    padding-block: 0.25rem;
+    font-weight: var(--font-weight-6);
+    text-transform: var(--text-uppercase);
+    color: var(--header-color);
+  }
+  :where(h2) {
+    border-bottom-style: solid;
+    border-bottom-width: 0.063rem;
+    border-bottom-color: var(--header-border-color);
+    font-size: var(--font-size-3);
+  }
+  :where(h3) {
+    font-size: var(--font-size-2);
+  }
+}
+
+:is(section.logo-menu) {
+  block-size: 100%;
+  :where(svg) {
+    fill: currentColor;
+    block-size: inherit;
+  }
+}

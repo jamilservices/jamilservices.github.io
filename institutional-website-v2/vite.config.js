@@ -11,6 +11,14 @@ export default defineConfig({
     build: {
         manifest: false,
         outDir: '../dist',
+        minify: 'terser',
+        target: "esnext",
+        terserOptions: {
+            mangle: false,
+        }
+    },
+    optimizeDeps: {
+        keepNames: true
     },
     css: {
         postcss: {
