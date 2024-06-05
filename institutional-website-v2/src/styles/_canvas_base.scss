@@ -3,6 +3,11 @@
 :where(:root) {
   @include settings.base-root;
   @include settings.border;
+  --sepia-color: 0;
+  --gray-color: 0;
+}
+:where(html) {
+  filter: sepia(var(--sepia-color)) grayscale(var(--gray-color));
 }
 
 :where(html, body) {
@@ -78,7 +83,7 @@ body {
 :is(button.link, li.link, span.link, i.link) {
   cursor: pointer;
 }
-:where(header, main, footer) {
+:where(header, main, section.settings-color, footer) {
   display: inline-flex;
   inline-size: 100%;
   max-inline-size: 64rem;
@@ -172,7 +177,7 @@ body {
   }
 }
 
-:is(article.about, article.sponsors, article.home) {
+:is(section.settings-color, article.about, article.sponsors, article.home) {
   display: inline-flex;
   flex-direction: column;
   inline-size: inherit;
@@ -191,6 +196,10 @@ body {
     --grid-column-max: max(var(--grid-item--min-width), var(--grid-item--max-width));
 
     grid-template-columns: repeat(auto-fill, minmax(var(--grid-column-max), 1fr));
+    &.slider {
+      justify-content: center;
+      grid-template-columns: repeat(auto-fit, 10rem);
+    }
     grid-gap: var(--grid-layout-gap);
 
   }
@@ -217,6 +226,26 @@ body {
       text-decoration-thickness: 0.063rem;
       text-underline-offset: 0.5rem;
     }
+    :where(input[name="theme"]) {
+      display: inline-flex;
+      align-items: center;
+      block-size: fit-content;
+      &:before {
+        display: inherit;
+        font-size: var(--font-size-2);
+      }
+      :is(&[value="dark"]) {
+        &:before {
+          content: "dark";
+        }
+      }
+      :is(&[value="light"]) {
+        &:before {
+          content: "light";
+        }
+      }
+    }
+
   }
 }
 
@@ -240,10 +269,10 @@ body {
     padding-block-start: 6ex;
   }
 }
-:is(article.sponsors, article.home) {
+:is(section.settings-color, article.sponsors, article.home) {
   gap: 4ex;
 }
-:is(article.home) {
+:is(section.settings-color, article.home) {
   :where(h2, h3) {
     inline-size: inherit;
     padding-inline: 0.5rem;

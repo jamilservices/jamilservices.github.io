@@ -1,6 +1,7 @@
 'use strict';
 
 import {logoSVGStruct} from "@components/render/struct/logoSVG.js";
+import {themeSettingsStruct} from "@components/render/struct/theme.js";
 
 const menuItems = [
     {text: "home", link: "home"},
@@ -101,6 +102,7 @@ const struct = {
     },
     children: [
         headerStruct,
+        themeSettingsStruct,
         contentStruct,
         footerStruct
     ]

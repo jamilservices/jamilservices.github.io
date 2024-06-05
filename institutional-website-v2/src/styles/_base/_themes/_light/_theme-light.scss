@@ -1,5 +1,4 @@
 @mixin light-theme {
-  :where(html) {
     color-scheme: light;
     --text-color: #000;
     --background-color: #e3e3e3;
@@ -7,5 +6,4 @@
     --link-color: #B22222;
     --header-color: #050709;
     --header-border-color: #8B899B;
-  }
 }

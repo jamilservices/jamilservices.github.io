@@ -54,14 +54,27 @@ $media-xxl: 1920px;
     font-size: var(--font-size-4);
   }
 }
+
 @media (prefers-color-scheme: light), (prefers-color-scheme: no-preference) {
-  @include theme-light.light-theme;
+  :where(:root) {
+    --theme-mode: 'light';
+  }
 }
 @media (prefers-color-scheme: dark) {
-  @include theme-dark.dark-theme;
+  :where(:root) {
+    --theme-mode: 'dark';
+  }
 }
 @media (prefers-reduced-motion: no-preference) {
   :where(html) {
     scroll-behavior: smooth;
+    @include theme-light.light-theme;
   }
+}
+
+:where(html.theme-dark) {
+  @include theme-dark.dark-theme;
+}
+:where(html.theme-light) {
+  @include theme-light.light-theme;
 }
