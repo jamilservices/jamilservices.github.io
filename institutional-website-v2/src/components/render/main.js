@@ -9,25 +9,38 @@ const storageKey = 'theme-preference';
 let themeMode;
 
 const storeEvents = NotifyModule.instance("page-store");
-const navActions = NotifyModule.instance("nav-action");
 
 const pages = {
     "home": homeStruct,
     "sponsors": sponsorStruct,
     "about": aboutStruct,
 };
-const navigateAction = (e) => {
+const menuControl = {
+    "show-mobile": (el) => {
+        try {
+            if (el && typeof el.setAttribute === "function") el.setAttribute("checked", "checked");
+        } catch {}
+        return true;
+    },
+    "hide-mobile": (el) => {
+        try {
+            if (el && typeof el.removeAttribute === "function") el.removeAttribute("checked");
+        } catch {}
+        return true;
+    },
+};
+const mobileMenuAction = (e) => {
     if(e?.target?.dataset) {
         const {nav} = e.target.dataset;
         if(nav) {
-            navActions.emit({
-               origin: "nav",
-               action: nav
-            });
+            if(menuControl[nav]) {
+                const getElement = CoreModule.getElementFromStore("menu-mobile-control");
+                if(getElement) return menuControl[nav](getElement);
+            }
         }
     }
 };
-CoreModule.eventRegister("nav-action", navigateAction);
+CoreModule.eventRegister("mobile-menu-action", mobileMenuAction);
 const colorSettings = (e) => {
     if(e?.target?.value && e.target.name) {
         const {value = 0, name} = e.target;

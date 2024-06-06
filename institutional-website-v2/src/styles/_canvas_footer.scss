@@ -1,0 +1,14 @@
+@use "_base/settings";
+
+//noinspection CssNoGenericFontName
+:is(footer.copyright) {
+  font-family: var(--font-mono);
+  font-size: var(--font-fluid-size-1);
+  font-weight: var(--font-weight-6);
+  justify-content: center;
+  align-items: center;
+  letter-spacing: var( --font-letter-spacing-3);
+  text-wrap: balance;
+  text-align: center;
+  word-break: break-word;
+}

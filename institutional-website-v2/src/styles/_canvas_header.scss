@@ -1,0 +1,76 @@
+@use "_base/settings";
+
+:where(header) {
+  :is(section.logo-menu) {
+    block-size: 100%;
+
+    :where(svg) {
+      fill: currentColor;
+      block-size: inherit;
+    }
+  }
+
+  :is(section.top-menu) {
+    align-items: center;
+    block-size: 8ex;
+    justify-content: flex-end;
+    flex-grow: 1;
+
+    :where(nav) {
+      display: inline-flex;
+      inline-size: fit-content;
+      block-size: fit-content;
+
+
+      //noinspection CssNoGenericFontName
+      :is(ul.default-menu, ul.compact-menu) {
+        display: none;
+        :where(a) {
+          text-decoration: none;
+        }
+
+        gap: 0.5rem;
+        align-items: center;
+
+        :where(li) {
+          display: inline-flex;
+          padding: 0;
+          margin: 0;
+          inline-size: fit-content;
+          block-size: fit-content;
+          :is(&.item-menu) {
+            :where(a,span) {
+              display: inline-flex;
+              font-family: var(--font-sans);
+              padding-inline: 0.75rem;
+              padding-block: 0.5rem;
+              font-size: var(--font-size-2);
+              font-weight: var(--font-weight-4);
+              color: inherit;
+              border: 0;
+              border-radius: var(--radius-round);
+
+              &:hover {
+                background-color: var(--menu-hover-background-color);
+              }
+            }
+          }
+        }
+      }
+
+    }
+    @media (min-width: 30rem) {
+      :is(ul.default-menu) {
+        display: inline-flex;
+      }
+    }
+    @media (max-width: 29.969rem) {
+      & {
+        justify-content: center;
+      }
+      :is(ul.compact-menu) {
+        display: inline-flex;
+      }
+    }
+  }
+}

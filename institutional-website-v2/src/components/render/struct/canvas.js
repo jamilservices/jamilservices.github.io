@@ -9,32 +9,35 @@ const menuItems = [
     {text: "sobre", link: "about"}
 ];
 
-const menuItemsStruct = () => {
+const menuItemsStruct = (mobile = false) => {
     const struct = [];
-    for(let i = (menuItems.length -1); i >= 0; i--){
+    for (let i = (menuItems.length - 1); i >= 0; i--) {
         const item = menuItems[i];
-        if(item) {
+        if (item) {
             const {text, link} = item;
-            if(text && link) {
+            if (text && link) {
+                const itemSchema = {
+                    element: "a",
+                    attr: {
+                        href: "./#/" + link
+                    },
+                    text
+                };
+                if (mobile) {
+                    itemSchema['dataset'] = {nav: "hide-mobile"};
+                    itemSchema['event'] = {type: "click", action: "mobile-menu-action"};
+                }
                 const schema = {
                     element: "li",
                     attr: {
                         class: "item-menu link"
                     },
-                    children: [
-                        {
-                            element: "a",
-                            attr: {
-                                href: "./#/"+ link
-                            },
-                            text
-                        }
-                    ]
+                    children: [itemSchema]
                 };
                 struct.push(schema);
             }
         }
-        if(i === 0) return struct.toReversed();
+        if (i === 0) return struct.toReversed();
     }
 };
 
@@ -53,7 +56,27 @@ const navStruct = {
             attr: {
                 class: "compact-menu"
             },
-            children: menuItemsStruct()
+            children: [
+                {
+                    element: "li",
+                    attr: {
+                        class: "item-menu link"
+                    },
+                    children: [
+                        {
+                            element: "span",
+                            text: "\u2630 menu",
+                            dataset: {
+                                nav: "show-mobile"
+                            },
+                            event: {
+                                type: "click",
+                                action: "mobile-menu-action"
+                            }
+                        }
+                    ]
+                }
+            ]
         }
     ]
 };
@@ -82,6 +105,32 @@ const headerStruct = {
         menuStruct
     ]
 };
+const mobileMenuStruct = {
+    element: "section",
+    attr: {
+        class: "mobile-menu"
+    },
+    children: [
+        {
+            element: "span",
+            text: "\u2715",
+            attr: {
+                class: "link"
+            },
+            dataset: {
+                nav: "hide-mobile"
+            },
+            event: {
+                type: "click",
+                action: "mobile-menu-action"
+            }
+        },
+        {
+            element: "ul",
+            children: menuItemsStruct(true)
+        }
+    ]
+};
 const contentStruct = {
     element: "main",
     dataset: {
@@ -101,6 +150,16 @@ const struct = {
         class: "canvas-container"
     },
     children: [
+        {
+            element: "input",
+            attr: {
+                type: "checkbox",
+            },
+            dataset: {
+                state: "menu-mobile-control",
+            }
+        },
+        mobileMenuStruct,
         headerStruct,
         themeSettingsStruct,
         contentStruct,
