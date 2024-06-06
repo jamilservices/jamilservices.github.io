@@ -2,7 +2,7 @@
 
 :where(header) {
   :is(section.logo-menu) {
-    block-size: 100%;
+    block-size: 4rem;
 
     :where(svg) {
       fill: currentColor;
