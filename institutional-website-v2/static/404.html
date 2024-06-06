@@ -29,9 +29,9 @@
     </style>
 </head>
 <body>
-<script>
-    const {hash, pathname, replace} = window.location;
-    if(hash.slice(1).length === 0 && pathname) replace("/#"+ window.location.pathname);
+<script type="module">
+    const {hash, pathname} = window.location;
+    if(hash.slice(1).length === 0 && pathname) window.location.replace("/#"+ window.location.pathname);
 </script>
 </body>
 </html>
