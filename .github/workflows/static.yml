@@ -44,7 +44,7 @@ jobs:
         run: |
           cd institutional-website-v2
           pnpm install
-          pnpm run build
+          pnpm run i_build
           cd dist
           tar -cvf ../artifact.tar *
       - uses: actions/upload-artifact@v4
